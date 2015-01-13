@@ -1,9 +1,9 @@
 {
-  id: "oracle.xdo.sttreemap.demo",
+  id: "oracle.xdo.demo.treemap",
   component: {
-      name: "ST Treemap",
-      tooltip: "Insert ST treemap",
-      cssClass: "STTreemap"
+      name: "Treemap",
+      tooltip: "Insert Treemap",
+      cssClass: "Treemap"
   },
   fields: [
     {name: "parent", caption: "Drop Parent Field Here", fieldType: "label", dataType: "string"},

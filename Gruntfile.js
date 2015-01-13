@@ -1,7 +1,7 @@
 'use strict';
 var fs = require('fs');
 
-var pluginFile = 'STTreemap.js';
+var pluginFile = 'Treemap.js';
 var baseURL = 'http://localhost:8080/mobile/';
 
 var bimad = require('orabimad-server');
