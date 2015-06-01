@@ -8,7 +8,7 @@
   fields: [
     {name: "parent", caption: "Drop Parent Field Here", fieldType: "label", dataType: "string"},
     {name: "child", caption: "Drop Child Field Here", fieldType: "label", dataType: "string"},
-    {name: "data", caption: "Drop Measure Field Here", fieldType: "measure", dataType: "number", formula: "summation"}
+    {name: "data", caption: "Drop Measure Field Here", fieldType: "measure", dataType: "number", formula: "summation", formatStyle: 'ms', formatMask: '#,###'}
   ],
   remoteFiles: [
     {type:"js", location:"//cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js", isLoaded: function() {
@@ -143,7 +143,8 @@
     var _this = this;
     var root = this._root;
     var nodes = parentNode.children.filter(function(d) { return d.depth == depth+1; });
-    var numFormatting = d3.format('$,.0f');
+
+    var numFormatting = this._formatter;
 
     var cell = svgParent.selectAll("g")
         .data(nodes)
@@ -169,7 +170,7 @@
     svgText.append("svg:tspan")
         .attr("x", function(d) { return d.dx / 2; })
         .attr("dy", "1.4em")
-        .text(function(d) { return numFormatting(d.value)+""; })
+        .text(function(d) { return numFormatting(d.value); })
 
     // defer calling opacity calculation until all texts are set
     svgText.style("opacity", function(d) {
@@ -240,6 +241,12 @@
     .value(function (d) {
       return d.value;
     });
+
+    this._formatter = d3.format('$,.0f');
+    if (xdo.api.format) {
+      this._formatter = xdo.api.format(fields[2].dataType,
+          fields[2].formatMask, fields[2].formatStyle);
+    }
 
     // init tree map root div
     var container = d3.select(containerElem)
