@@ -1,5 +1,5 @@
 {
-  id: "oracle.xdo.demo.treemap",
+  id: "com.oracle.bimad.sample.treemap",
   component: {
       name: "Treemap",
       tooltip: "Insert Treemap",
