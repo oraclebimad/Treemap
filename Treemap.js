@@ -1,9 +1,10 @@
 {
-  id: "com.oracle.bimad.sample.treemap",
+  id: "com.oracle.bimad.Treemap",
   component: {
       name: "Treemap",
-      tooltip: "Insert Treemap",
-      cssClass: "Treemap"
+      tooltip: "Treemap shows hierarchical data as a set of nested rectangles. It supports zoom in/out by clicking one of rectangles to focus on each category.",
+      cssClass: "Treemap",
+      icon: 'assert://icon.png'
   },
   fields: [
     {name: "parent", caption: "Drop Parent Field Here", fieldType: "label", dataType: "string"},
